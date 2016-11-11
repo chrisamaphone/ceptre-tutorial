@@ -1,0 +1,93 @@
+
+character : type.
+a : character.
+b : character.
+c : character.
+
+action : type.
+greet character character : action.
+ask character character : action.
+relate character character : action.
+
+reaction : type.
+reply_greet character character : reaction.
+answer character character : reaction.
+ignore character character : reaction.
+sympathy character character : reaction.
+anger character character : reaction.
+
+interaction : type.
+pair action reaction : interaction.
+
+interactions : type.
+nil : interactions.
+cons interaction interactions : interactions.
+
+nat : type.
+z : nat.
+s nat : nat.
+
+#builtin NAT nat.
+#builtin NAT_ZERO z.
+#builtin NAT_SUCC s.
+
+geq nat nat : bwd.
+geq N z.
+geq (s M) (s N)
+  <- geq M N.
+
+leq nat nat : bwd.
+leq N M
+  <- geq M N.
+
+mood character nat : pred.
+% history character character interactions : pred.
+unmet character character : pred.
+act action : pred.
+react reaction : pred.
+
+turn : pred.
+
+context init =
+{ unmet a b, unmet b a,
+  unmet b c, unmet c b,
+  unmet a c, unmet c a,
+  mood a 3, mood b 1, mood c 4,
+  turn }.
+
+
+stage act = {
+
+%% character-to-character interactions
+
+pass : turn -o ().
+
+introduce : turn * $mood C1 M * geq M 3 * $unmet C1 C2
+  -o act (greet C1 C2).
+
+process_reaction/reply_greet : react (reply_greet C2 C1) * mood C M -o mood C (s M).
+process_reaction/ignore : react (ignore C2 C1) * mood C1 (s M) -o mood C1 M.
+process_reaction/ignore/z : react (ignore C2 C1) * mood C1 z -o mood C1 z.
+
+
+} #interactive act.
+qui * stage act -o stage react.
+
+
+stage react = {
+
+react/greet/happy : act (greet C1 C2) * $mood C2 M * geq M 3 
+    * unmet C1 C2 * unmet C2 C1
+    -o react (reply_greet C2 C1).
+
+
+react/greet/sad : act (greet C1 C2) * $mood C2 M * leq M 2 * 
+    unmet C1 C2 * unmet C2 C1
+    -o react (ignore C2 C1).
+
+} #interactive react.
+qui * stage react -o stage act * turn.
+
+
+#trace _ act init.
+
