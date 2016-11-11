@@ -31,7 +31,7 @@ If that doesn't work, follow instructions at https://github.com/chrisamaphone/in
 
 ## Basics: a 2-rule example
 
-1. Love triangle story world. Key idea: implement interaction rules with
+Love triangle story world. Key idea: implement interaction rules with
    *multiset rewriting* notation, e.g.
 
    <code>
@@ -44,9 +44,13 @@ If that doesn't work, follow instructions at https://github.com/chrisamaphone/in
 
 ## Interactive story worlds
 
+Key idea: interacting with rules.
+
   File: quest.cep
 
 ## Autonomous and social NPCs
+
+Key idea: using stages to separate actions and reactions.
 
   File: social.cep
 
