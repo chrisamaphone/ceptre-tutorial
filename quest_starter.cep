@@ -1,0 +1,15 @@
+
+character : type.
+place : type.
+object : type.
+
+
+context init = {} .
+
+stage play = {
+
+} #interactive play.
+
+
+#trace _ play init.
+
