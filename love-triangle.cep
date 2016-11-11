@@ -4,13 +4,13 @@ helena : character.
 hermia : character.
 lysander : character.
 
-diseq character character : bwd.
-diseq helena hermia.
-diseq helena lysander.
-diseq hermia helena.
-diseq hermia lysander.
-diseq lysander helena.
-diseq lysander hermia.
+neq character character : bwd.
+neq helena hermia.
+neq helena lysander.
+neq hermia helena.
+neq hermia lysander.
+neq lysander helena.
+neq lysander hermia.
 
 eros character character : pred.
 anger character character : pred.
@@ -23,7 +23,7 @@ context init =
 
 stage go = {
 jealousy
-  : $eros A B * $eros C A * diseq C A
+  : $eros A B * $eros C A * neq C A
   -o anger C A * anger C B.
 
 move_on
