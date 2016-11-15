@@ -61,7 +61,7 @@ say_hi : turn player * $at player Place * $at C Place -o ().
 
 wait : turn player -o ().
 
-} %#interactive play.
+} #interactive play.
 qui * stage play -o stage sim * turn a * turn b.
 
 stage sim = {

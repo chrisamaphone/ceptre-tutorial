@@ -51,14 +51,29 @@ File: quest.cep
 
 Key idea: interacting with rules.
 
+Exercises:
+
+- Add a rule for opening something (e.g. the chest).
+- Add a rule for taking something out of something (e.g. the map out of the
+  chest) and moving it to the surrounding room.
+
+
+## Autonomous NPCs
+
+File: quest-sim.cep
+
+Key idea: using stages to separate interactive and autonomous behavior.
+
 Exercise:
+- Add a character-to-character interaction of your choosing.
 
+## Social NPCs
 
-## Autonomous and social NPCs
+File: quest-social.cep (or build on quest-sim.cep)
 
-File: sim.cep
-
-Key idea: using stages to separate actions and reactions.
+Key idea: writing backward-chaining rules and using predicates defined by
+them to check conditions, e.g. "Does C1 like C2 enough to give them an item
+that they want?"
 
 
 

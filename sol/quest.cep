@@ -54,8 +54,6 @@ take_out :
 -o 
     ato Thing P.
 
-%% character-to-character interactions
-
 } #interactive play.
 qui * stage play -o stage auto.
 
