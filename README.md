@@ -1,7 +1,8 @@
 # ceptre-tutorial
 Tutorial materials for Ceptre. You will need: a unix-based command line
-(e.g. Terminal on Mac OS X or Cygwin on Windows). You will need to install
-git.
+(e.g. Terminal on Mac OS X or Cygwin on Windows), libgmp on
+Linux or OS X, basic command line knowledge (tar, cp, mv, etc.), and a text
+editor for code.
 
 ## Installation
 
