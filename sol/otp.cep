@@ -1,0 +1,28 @@
+character : type.
+janeway : character.
+sevenof9 : character.
+the_doctor : character.
+river_song : character.
+buffy : character.
+spike : character.
+
+available character : pred.
+paired character character : pred.
+
+context singles =
+{
+available janeway,
+available sevenof9,
+available buffy,
+available spike,
+available the_doctor,
+available river_song
+}.
+
+stage pair_up = {
+
+pair : available C1 * available C2 -o paired C1 C2.
+
+}
+
+#trace _ pair_up singles.

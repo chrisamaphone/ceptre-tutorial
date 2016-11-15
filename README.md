@@ -14,7 +14,8 @@ $ git clone https://github.com/chrisamaphone/ceptre-tutorial.git
 Or download as zip file and unzip.
 
 
-2. Try un-tar-ing the appropriate binary file for your system:
+2. Get the binary file appropriate for your system from (XXX link), then
+   un-tar it:
   
 <code>
 $ tar -xzvf ceptre-<SYSTEM>.tar.gz
@@ -23,36 +24,42 @@ $ tar -xzvf ceptre-<SYSTEM>.tar.gz
 If that doesn't work, follow instructions at https://github.com/chrisamaphone/interactive-lp
    to download and install.
 
-2. Test: 
+3. Test: 
 
 <code>
 ./ceptre love-triangle.cep 
 </code>
 
-## Basics: a 2-rule example
+4. Optionally, download GraphViz: http://www.graphviz.org/ 
 
-Love triangle story world. Key idea: implement interaction rules with
-   *multiset rewriting* notation, e.g.
+## Basics: a 1-rule example
+
+File: otp.cep.
+
+Key idea: writing rules with *multiset rewriting* notation.
+
+RANDOM FANDOM! Generate OTPs from a cast of characters.
 
    <code>
-   jealousy
-     : $eros A B * $eros C A * neq C A 
-       -o anger C A * anger C B.
+    pair : available C1 * available C2 -o paired C1 C2.
    </code>
 
-  File: love-triangle.cep
 
 ## Interactive story worlds
 
+File: quest.cep
+
 Key idea: interacting with rules.
 
-  File: quest.cep
+Exercise:
+
 
 ## Autonomous and social NPCs
 
+File: sim.cep
+
 Key idea: using stages to separate actions and reactions.
 
-  File: social.cep
 
 
 

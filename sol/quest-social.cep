@@ -1,0 +1,107 @@
+
+character : type.
+player : character.
+a : character.
+b : character.
+
+place : type.
+object : type.
+
+foyer : place.
+den : place.
+garden : place.
+inside object : place.
+held_by character : place.
+
+key : object.
+chest : object.
+map : object.
+
+portable object : bwd.
+portable map.
+portable key.
+
+at character place : pred.
+ato object place : pred.
+locked object : pred.
+open object : pred.
+
+
+nat : type.
+z : nat.
+s nat : nat.
+#builtin NAT nat.
+#builtin NAT_ZERO z.
+#builtin NAT_SUCC s.
+
+wants character object : pred.
+sentiment character character nat : pred.
+
+geq nat nat : bwd.
+geq N z.
+geq (s N) (s M)
+  <- geq N M.
+
+adjacent place place : bwd.
+adjacent foyer den.
+adjacent den foyer.
+adjacent den garden.
+adjacent garden den.
+
+
+context init =
+{ at player foyer, ato chest garden, 
+ato key den, ato map (inside chest), locked chest,
+at a garden,
+at b den,
+sentiment a b 3,
+sentiment b a 3,
+sentiment a player 3,
+sentiment b player 3,
+sentiment player a 3,
+sentiment player b 3,
+wants player map,
+wants a map,
+wants b map}.
+
+stage play = {
+
+move : at C P * adjacent P P' -o at C P'.
+
+take : $at C P * ato O P * portable O -o ato O (held_by C).
+
+open : $at C P * $ato Container P * 
+        ato key (held_by C) * locked Container 
+      -o 
+        open chest.
+
+take_out : 
+    $open Container * ato Thing (inside Container) * 
+    $at C P * $ato Container P 
+-o 
+    ato Thing P.
+
+%% character-to-character interactions
+
+compliment :
+  $at C1 P * $at C2 P *
+  $sentiment C1 C2 S * geq S 3 *
+  sentiment C2 C1 S'
+-o
+  sentiment C2 C1 (s S').
+
+give : $at Giver P * $at Recipient P * ato Thing (held_by Giver) 
+  * wants Recipient Thing
+  * $sentiment Giver Recipient GRFeel * geq Feel 4
+  * sentiment Recipient Giver RGFeel
+      -o 
+    ato Thing (held_by Recipient) *
+    sentiment Recipient Giver (s RGFeel).
+    
+
+} #interactive play.
+qui * stage play -o stage auto.
+
+
+#trace _ play init.
+

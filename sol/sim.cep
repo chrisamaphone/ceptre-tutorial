@@ -1,0 +1,97 @@
+
+character : type.
+player : character.
+a : character.
+b : character.
+
+place : type.
+object : type.
+
+foyer : place.
+den : place.
+garden : place.
+inside object : place.
+held_by character : place.
+
+key : object.
+chest : object.
+map : object.
+
+portable object : bwd.
+portable map.
+portable key.
+
+at character place : pred.
+ato object place : pred.
+locked object : pred.
+open object : pred.
+
+adjacent place place : bwd.
+adjacent foyer den.
+adjacent den foyer.
+adjacent den garden.
+adjacent garden den.
+
+turn character  : pred.
+winner character : pred.
+
+context init =
+{ turn player, at a foyer, at player foyer, at b garden, ato chest garden, 
+ato key den, ato map (inside chest), locked chest }.
+
+stage play = {
+
+move : turn player * at player P * adjacent P P' -o at player P'.
+
+take : turn player * $at player P * ato O P * portable O -o ato O (held_by player).
+
+open : turn player * $at player P * $ato Container P * 
+        ato key (held_by player) * locked Container 
+      -o 
+        open chest.
+
+take_out : 
+    turn player * $open Container * ato Thing (inside Container) * 
+    $at player P * $ato Container P 
+-o 
+    ato Thing P.
+
+%% Character-to-character interactions
+say_hi : turn player * $at player Place * $at C Place -o ().
+
+wait : turn player -o ().
+
+} %#interactive play.
+qui * stage play -o stage sim * turn a * turn b.
+
+stage sim = {
+
+move : turn C * at C P * adjacent P P' -o at C P'.
+
+take : turn C * $at C P * ato O P * portable O -o ato O (held_by C).
+
+open :
+  turn C * at C P * ato Container P * 
+  ato key (held_by C) * locked Container 
+-o 
+  open Container.
+
+take_out : 
+    turn C *
+    $open Container * ato Thing (inside Container) * 
+    $at C P * $ato Container P 
+-o 
+    ato Thing P.
+
+}
+qui * stage sim -o stage check_win.
+
+stage check_win = {
+
+win : ato map (held_by C) -o winner C.
+
+}
+qui * stage check_win * $ato map P -o stage play * turn player.
+
+#trace _ play init.
+
