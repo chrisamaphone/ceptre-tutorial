@@ -34,6 +34,18 @@ editor for code.
 
 4. Optionally, download GraphViz: http://www.graphviz.org/ 
 
+## Overview: What can Ceptre do for digital storytelling?
+
+Ceptre can be used to prototype or implement autonomous behavior for
+interactive stories or games. That autonomous behavior could be used for
+procedural content generation or for controlling non-player characters that
+the player interacts with.
+
+Ceptre aims to hit a sweet spot between tools for generalized agent
+autonomy, such as planners, which have little support for designing
+interaction models; and interactive story authoring tools, such as
+Inform, which have little support for autonomy.
+
 ## Basics: a 1-rule example
 
 File: otp.cep.
