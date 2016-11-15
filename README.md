@@ -29,7 +29,7 @@ If that doesn't work, follow instructions at https://github.com/chrisamaphone/in
 3. Test: 
 
 <code>
-./ceptre love-triangle.cep 
+./ceptre sol/otp.cep
 </code>
 
 4. Optionally, download GraphViz: http://www.graphviz.org/ 
