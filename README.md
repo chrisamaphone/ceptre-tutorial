@@ -8,29 +8,29 @@ editor for code.
 
 1. Clone this repository: 
 
-<code>
-$ git clone https://github.com/chrisamaphone/ceptre-tutorial.git
-</code>
+  <code>
+  $ git clone https://github.com/chrisamaphone/ceptre-tutorial.git
+  </code>
 
-Or download as zip file and unzip.
+  Or download as zip file and unzip.
 
 
 2. Get the binary file appropriate for your system from [Google
    Drive](https://drive.google.com/drive/u/1/folders/0B6BJA78gViuAN3A0WlVkdXBjMk0), then
    un-tar it:
   
-<code>
-$ tar -xzvf ceptre-(SYSTEM).tar.gz
-</code>
+  <code>
+  $ tar -xzvf ceptre-(SYSTEM).tar.gz
+  </code>
 
-If that doesn't work, follow instructions at https://github.com/chrisamaphone/interactive-lp
-   to download and install.
+  If that doesn't work, follow instructions at https://github.com/chrisamaphone/interactive-lp
+    to download and install.
 
 3. Test: 
 
-<code>
-./ceptre sol/otp.cep
-</code>
+  <code>
+  ./ceptre sol/otp.cep
+  </code>
 
 4. Optionally, download GraphViz: http://www.graphviz.org/ 
 
