@@ -14,7 +14,8 @@ $ git clone https://github.com/chrisamaphone/ceptre-tutorial.git
 Or download as zip file and unzip.
 
 
-2. Get the binary file appropriate for your system from (XXX link), then
+2. Get the binary file appropriate for your system from [Google
+   Drive](https://drive.google.com/drive/u/1/folders/0B6BJA78gViuAN3A0WlVkdXBjMk0), then
    un-tar it:
   
 <code>
