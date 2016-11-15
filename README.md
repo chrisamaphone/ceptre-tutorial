@@ -20,7 +20,7 @@ Or download as zip file and unzip.
    un-tar it:
   
 <code>
-$ tar -xzvf ceptre-<SYSTEM>.tar.gz
+$ tar -xzvf ceptre-(SYSTEM).tar.gz
 </code>
 
 If that doesn't work, follow instructions at https://github.com/chrisamaphone/interactive-lp
